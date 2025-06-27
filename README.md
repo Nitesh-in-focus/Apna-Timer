@@ -29,7 +29,5 @@
 - **Particles.js** for visual effects
 - **Google Fonts (Orbitron + Poppins)**
 
----
 
-## 📁 Project Structure
 
