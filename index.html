@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Titan Countdown</title>
+
+    <!-- Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Particle.js -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+
+    <!-- EmailJS -->
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <script>
+      (function () {
+        emailjs.init("gOyI8j-2LBkDdDg6w");
+      })();
+    </script>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div id="particles-js"></div>
+
+    <!-- Title -->
+    <h1>
+      <svg
+        class="clock-icon"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+      >
+        <circle cx="12" cy="12" r="10" />
+        <polyline points="12 6 12 12 16 14" />
+      </svg>
+      Apna Timer
+    </h1>
+
+    <!-- Auth Section -->
+    <div id="authSection">
+      <!-- Register -->
+      <div id="registerSection">
+        <form id="registerForm">
+          <h2>Register</h2>
+          <input type="text" id="username" placeholder="Username" required />
+          <input type="email" id="regEmail" placeholder="Email" required />
+          <input
+            type="password"
+            id="regPassword"
+            placeholder="Password"
+            required
+            autocomplete="off"
+          />
+          <button type="submit">Register</button>
+          <p>
+            Already have an account?
+            <a href="#" onclick="toggleForms('login')">Login here</a>
+          </p>
+        </form>
+      </div>
+
+      <!-- Login -->
+      <div id="loginSection" style="display: none">
+        <form id="loginForm">
+          <h2>Login</h2>
+          <input type="email" id="loginEmail" placeholder="Email" required />
+          <input
+            type="password"
+            id="loginPassword"
+            placeholder="Password"
+            required
+            autocomplete="off"
+          />
+          <button type="submit">Login</button>
+          <p>
+            Don't have an account?
+            <a href="#" onclick="toggleForms('register')">Register here</a>
+          </p>
+        </form>
+      </div>
+    </div>
+
+    <!-- Countdown Section -->
+    <div id="appSection" style="display: none">
+      <h2 id="welcomeUser">Welcome, <span id="typedUsername"></span></h2>
+
+      <button onclick="logout()" style="margin-bottom: 20px">Logout</button>
+
+      <!-- Theme Toggle -->
+      <div class="theme-toggle">
+        <label class="switch">
+          <input type="checkbox" id="themeToggle" />
+          <span class="slider round"></span>
+        </label>
+        <span id="themeLabel">Dark Mode</span>
+      </div>
+
+      <!-- Countdown Form -->
+      <form id="countdownForm">
+        <input type="text" id="eventName" placeholder="Event Name" required />
+        <input type="datetime-local" id="eventDate" required />
+        <input type="email" id="eventEmail" placeholder="Your Email" required />
+        <button type="submit">Add Countdown</button>
+      </form>
+
+      <!-- Countdown List -->
+      <div class="countdown-list" id="countdownList"></div>
+    </div>
+
+    <!-- Edit Modal -->
+    <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+      <div class="modal" onclick="event.stopPropagation()">
+        <h3>Edit Countdown</h3>
+        <input type="text" id="editName" />
+        <input type="datetime-local" id="editDate" />
+        <div class="modal-buttons">
+          <button onclick="closeModal()">Cancel</button>
+          <button onclick="updateCountdown()">Update</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+  </body>
+</html>

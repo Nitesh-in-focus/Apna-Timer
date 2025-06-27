@@ -1,0 +1,596 @@
+/* ==== GLOBAL ==== */
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background: radial-gradient(ellipse at top left, #0a0f1c, #111);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-family: "Orbitron", sans-serif;
+  font-size: 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 2rem;
+}
+
+.clock-icon {
+  width: 32px;
+  height: 32px;
+  animation: spin 5s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+#particles-js {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  top: 0;
+  left: 0;
+}
+
+/* ==== AUTH SECTION ==== */
+#authSection {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(15px);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(0, 255, 179, 0.15);
+  width: 100%;
+  max-width: 400px;
+  margin-bottom: 40px;
+  transition: 0.4s;
+}
+
+#authSection h2 {
+  font-family: "Orbitron", sans-serif;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #00ffb3;
+}
+
+#authSection form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+#authSection input {
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: none;
+  font-size: 1rem;
+  outline: none;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  transition: 0.3s;
+}
+
+#authSection input::placeholder {
+  color: #aaa;
+}
+
+#authSection input:focus {
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 0 0 2px #00ffb3;
+}
+
+#authSection button {
+  background: #00ffb3;
+  color: black;
+  font-weight: bold;
+  padding: 10px 0;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s;
+}
+
+#authSection button:hover {
+  background: #00ffa2;
+}
+
+#authSection p {
+  text-align: center;
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+#authSection a {
+  color: #00ffd5;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+#authSection a:hover {
+  text-decoration: underline;
+}
+
+/* ==== COUNTDOWN SECTION ==== */
+#appSection h2#welcomeUser {
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+  color: #00ffb3;
+  font-family: "Orbitron", sans-serif;
+}
+
+form {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+input,
+button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+  font-size: 1rem;
+}
+
+button {
+  background: #00ffb3;
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #00ffa2;
+}
+
+.countdown-list {
+  width: 100%;
+  max-width: 700px;
+  display: grid;
+  gap: 20px;
+}
+
+.countdown-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.1);
+  position: relative;
+  transform: translateZ(0);
+  transition: 0.3s ease-in-out;
+}
+
+.countdown-card.expired {
+  background: rgba(255, 50, 50, 0.15);
+  border-left: 5px solid red;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 10px red;
+  }
+  50% {
+    box-shadow: 0 0 20px red;
+  }
+}
+
+.timer {
+  font-family: "Orbitron", sans-serif;
+  font-size: 1.2rem;
+  margin: 8px 0;
+}
+
+.progress-bar-container {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  height: 8px;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #00ffd5, #ff00c8);
+  width: 0%;
+  transition: width 1s linear;
+  border-radius: 8px;
+}
+
+.actions {
+  margin-top: 12px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.edit-btn,
+.delete-btn {
+  padding: 8px 12px;
+  font-size: 0.9rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.edit-btn {
+  background-color: #ffc107;
+}
+
+.delete-btn {
+  background-color: #f44336;
+  color: white;
+}
+
+/* ==== MODAL ==== */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+
+.modal {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(15px);
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.2);
+  min-width: 300px;
+}
+
+.modal input {
+  display: block;
+  width: 90%;
+  margin: 10px 0;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+/* ==== SENT LABEL ==== */
+.sent-label {
+  font-size: 0.85rem;
+  color: #00ffb3;
+  background-color: rgba(0, 255, 179, 0.1);
+  padding: 4px 8px;
+  border-radius: 6px;
+  margin-top: 6px;
+  display: inline-block;
+  animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==== GLOW ==== */
+.glow-border {
+  border-left: 5px solid #00ffb3;
+  box-shadow: 0 0 15px #00ffb3;
+  animation: subtlePulse 2s infinite;
+}
+
+@keyframes subtlePulse {
+  0%,
+  100% {
+    box-shadow: 0 0 10px #00ffb3;
+  }
+  50% {
+    box-shadow: 0 0 20px #00ffb3;
+  }
+}
+
+/* ==== MEDIA QUERIES FOR MOBILE ==== */
+@media (max-width: 600px) {
+  body {
+    padding: 20px 10px;
+    font-size: 0.95rem;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .clock-icon {
+    width: 28px;
+    height: 28px;
+  }
+
+  #authSection {
+    padding: 20px;
+    width: 95%;
+  }
+
+  #authSection input,
+  #authSection button {
+    font-size: 0.95rem;
+    padding: 10px;
+  }
+
+  form {
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+  }
+
+  input {
+    width: 88%;
+    font-size: 1rem;
+  }
+  button {
+    width: 100%;
+    font-size: 1rem;
+  }
+
+  .countdown-list {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    width: 100%;
+  }
+
+  .countdown-card {
+    padding: 15px;
+  }
+
+  .timer {
+    font-size: 1rem;
+  }
+
+  .progress-bar-container {
+    height: 6px;
+  }
+
+  .actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .edit-btn,
+  .delete-btn {
+    width: 100%;
+    font-size: 0.9rem;
+    padding: 10px;
+  }
+
+  .modal {
+    width: 90%;
+    min-width: unset;
+  }
+
+  .modal input {
+    width: 100%;
+  }
+
+  .modal-buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  #appSection h2#welcomeUser {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+
+  .sent-label {
+    font-size: 0.8rem;
+    text-align: center;
+  }
+
+  .modal {
+    width: 90%;
+    padding: 20px;
+    border-radius: 16px;
+    font-size: 0.95rem;
+  }
+
+  .modal input {
+    width: 100%;
+    margin: 8px 0;
+    font-size: 1rem;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+
+  .modal-buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .modal-buttons button {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+  }
+
+  .modal-overlay {
+    padding: 10px;
+    align-items: flex-start;
+    overflow-y: auto;
+  }
+}
+
+/* User */
+
+#welcomeUser {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: center;
+  font-size: 1.8rem;
+  font-family: "Orbitron", sans-serif;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+  color: #00ffe7;
+  text-align: center;
+}
+
+#typedUsername {
+  position: relative;
+  color: #00ffe7;
+  font-weight: 600;
+  font-family: "Orbitron", sans-serif;
+  letter-spacing: 1px;
+  border-bottom: 2px solid #00ffe7;
+  animation: typingBorder 2s ease-in-out infinite;
+}
+
+@keyframes typingBorder {
+  0%,
+  100% {
+    border-color: transparent;
+  }
+  50% {
+    border-color: #00ffe7;
+  }
+}
+
+#typedUsername::after {
+  content: "|";
+  animation: blink 0.7s steps(1) infinite;
+  color: #00ffe7;
+  margin-left: 4px;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Toggle Switch Style */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 26px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  border-radius: 30px;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 4px;
+  bottom: 3px;
+  background-color: white;
+  border-radius: 50%;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #00ffc3;
+}
+
+input:checked + .slider:before {
+  transform: translateX(24px);
+}
+
+/* Light Theme (Default is Dark) */
+.light-mode {
+  background-color: #f0f0f0;
+  color: #111;
+}
+
+.light-mode h1,
+.light-mode h2,
+.light-mode input,
+.light-mode button,
+.light-mode select,
+.light-mode label {
+  color: #111;
+}
+
+.light-mode .countdown-card {
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+}
+
+/* Default dark background */
+#particles-js {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #0b0f1a; /* your current dark color */
+  z-index: -1;
+}
+
+/* Light theme override */
+.light-mode #particles-js {
+  background-color: #f1f1f1; /* light background */
+}
+
+body.light-mode {
+  background: #fefefe;
+  transition: background 0.5s ease-in-out;
+}
