@@ -2,15 +2,9 @@
 
 **Titan Countdown** is a futuristic, animated countdown timer web app with user login/registration, real-time countdown tracking, email notifications, and theme toggling — all built using Firebase and pure frontend technologies.
 
-![Titan Countdown Screenshot](https://your-screenshot-url.com)
-
----
-
 ## 🚀 Live Demo
 
-👉 [Try the Live App on Netlify](https://your-netlify-link.netlify.app)
-
----
+👉 [Try the Live App on Netlify](https://apnatimer.netlify.app/)
 
 ## ✨ Features
 
